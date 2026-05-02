@@ -17,7 +17,7 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(value1, value2 ) {
+function concatenateStrings(value1, value2) {
   return value1 + value2;
 }
 
@@ -49,9 +49,9 @@ function getStringLength(value) {
  *   'John','Doe'      => 'Hello, John Doe!'
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate( firstName, lastName ) {
- const name = firstName + ' ' + lastName + '!';
- return `Hello, ${name}`;
+function getStringFromTemplate(firstName, lastName) {
+  const name = `${firstName} ${lastName}!`;
+  return `Hello, ${name}`;
 }
 
 /**
@@ -64,9 +64,10 @@ function getStringFromTemplate( firstName, lastName ) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate( value ) {
-const name = value.split('');
-return name.slice(7).join('');
+function extractNameFromTemplate(value) {
+ const arr = value.split(',')
+const name = arr[1].slice(0, -1)
+return name.toString();
 }
 
 /**
@@ -79,8 +80,8 @@ return name.slice(7).join('');
  *   'John Doe'  => 'J'
  *   'cat'       => 'c'
  */
-function getFirstChar( value ) {
-return value[0]; 
+function getFirstChar(value) {
+  return value[0];
 }
 
 /**
@@ -94,7 +95,7 @@ return value[0];
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces( value) {
+function removeLeadingAndTrailingWhitespaces(value) {
   return value.trim();
 }
 
@@ -109,7 +110,7 @@ function removeLeadingAndTrailingWhitespaces( value) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString( value, count ) {
+function repeatString(value, count) {
   return value.repeat(count);
 }
 
@@ -126,7 +127,7 @@ function repeatString( value, count ) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-return str.replace(value, "");
+  return str.replace(value, '');
 }
 
 /**
@@ -140,8 +141,8 @@ return str.replace(value, "");
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag( str) {
-  return str.replace(/^<|>$/g)
+function unbracketTag(str) {
+  return str.replace(/^<|>$/, '');
 }
 
 /**
@@ -154,8 +155,8 @@ function unbracketTag( str) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase( str ) {
-  return str.toUpperCase;
+function convertToUpperCase(str) {
+  return str.toUpperCase();
 }
 
 /**
@@ -173,8 +174,8 @@ function convertToUpperCase( str ) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails( str ) {
-  return str.split(";")
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -200,11 +201,11 @@ function extractEmails( str ) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString( width, height) {
-  const Width = '-'.repeat(width) + '\n';
-  const Heigth = '|' + ' '.repeat(width-2) + '|';
+function getRectangleString(width, height) {
+  const Width = `${'-'.repeat(width)}\n`;
+  const Heigth = `|${' '.repeat(width - 2)}|`;
 
-  return Width + Heigth.repeat(height-2) + Width
+  return Width + Heigth.repeat(height - 2) + Width;
 }
 
 /**
@@ -224,7 +225,7 @@ function getRectangleString( width, height) {
  *
  */
 function encodeToRot13(str) {
-  return str.replace(/[a-zA-Z]/g, function(char) {
+  return str.replace(/[a-zA-Z]/g, function (char) {
     const code = char.charCodeAt(0);
     const isUpperCase = char === char.toUpperCase();
     const base = isUpperCase ? 65 : 97;
@@ -245,7 +246,7 @@ function encodeToRot13(str) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(value ) {
+function isString(value) {
   return typeof value === 'string' || value instanceof String;
 }
 
@@ -273,12 +274,60 @@ function isString(value ) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId( value ) {
+function getCardId(value) {
   const coloda = [
-    'A♣','2♣','3♣','4♣','5♣','6♣','7♣','8♣','9♣','10♣','J♣','Q♣','K♣',
-    'A♦','2♦','3♦','4♦','5♦','6♦','7♦','8♦','9♦','10♦','J♦','Q♦','K♦',
-    'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
-    'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
   ];
   return coloda.indexOf(value);
 }
