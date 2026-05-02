@@ -65,9 +65,9 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
- const arr = value.split(',')
-const name = arr[1].slice(0, -1)
-return name.toString();
+  const arr = value.split(',');
+  const name = arr[1].slice(0, -1);
+  return name.trim().toString();
 }
 
 /**
@@ -142,7 +142,7 @@ function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 function unbracketTag(str) {
-  return str.replace(/^<|>$/, '');
+  return str.slice(1, -1);
 }
 
 /**
@@ -202,10 +202,11 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  const Width = `${'-'.repeat(width)}\n`;
-  const Heigth = `|${' '.repeat(width - 2)}|`;
-
-  return Width + Heigth.repeat(height - 2) + Width;
+  const top = '┌' + '─'.repeat(width - 2) + '┐\n';
+  const middle = '│' + ' '.repeat(width - 2) + '│\n';
+  const bottom = '└' + '─'.repeat(width - 2) + '┘\n';
+  
+  return top + middle.repeat(height - 2) + bottom;
 }
 
 /**
